@@ -36,6 +36,16 @@ function isMissPlaced(){
 return {missplaced: missplaced}
 }
 
+function notInTheWord(){
+  for (const char of arrayWord) {
+    if (arrayBase.includes(char) === false) {
+      notInWord.push(char);
+    }
+  }
+  return {
+    notInWord : notInWord
+  }
+}
 
 
 function tryWord(word, wordToFind) {
@@ -43,30 +53,10 @@ function tryWord(word, wordToFind) {
   if (word === wordToFind) {
     return true;
   } else {
-    
-
-    let arrayWord = word.split("");
-
-    for (let i = 0; i < arrayBase.length; i++) {
-      if (arrayBase[i] === arrayWord[i]) {
-        wellPlaced.push(arrayWord[i]);
-      } else {
-        missplaced.push(arrayWord[i]);
-      }
-    }
-
-    for (const char of arrayWord) {
-      if (arrayBase.includes(char) === false) {
-        notInWord.push(char);
-      }
-    }
-
-    return {
-      wellPlaced: wellPlaced,
-      missplaced: missplaced,
-      notInWord: notInWord,
-    };
-  }
+    isWellPlaced()
+    isMissPlaced()
+    notInTheWord()  
+}
 }
 
 function guess() {
