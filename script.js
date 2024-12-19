@@ -13,9 +13,11 @@ function firstLetter() {
 firstLetter();
 
 function numbersOfLetters() {
-  document.getElementById("letters").innerHTML = arrayBase.length;
+  document.getElementById("letters").innerHTML = "Le nombre de lettre est : " + arrayBase.length;
 }
 numbersOfLetters();
+
+
 
 function tryWord(word, wordToFind) {
   // Réinitialisation des tableaux
