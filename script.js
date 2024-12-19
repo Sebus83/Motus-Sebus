@@ -1,5 +1,5 @@
 let wordToFind = "Dictionnaire";
-let arrayBase = wordToFind.split("");
+let arrayWordToFind = wordToFind.split("");
 let word = document.getElementById("word").value;
 let arrayWord = word.split("");
 let wellPlaced = [];
@@ -8,12 +8,12 @@ let missplaced = [];
 let result = {};
 
 function firstLetter() {
-  document.getElementById("word").value = arrayBase[0];
+  document.getElementById("word").value = arrayWordToFind[0];
 }
 firstLetter();
 
 function numbersOfLetters() {
-  document.getElementById("letters").innerHTML = "Le nombre de lettre est : " + arrayBase.length;
+  document.getElementById("letters").innerHTML = arrayWordToFind.length;
 }
 numbersOfLetters();
 
@@ -26,7 +26,7 @@ function tryWord(word, wordToFind) {
   missplaced = [];
   notInWord = [];
   wordToFind = "Dictionnaire";
-  let arrayWordToFind = wordToFind.split("")
+  // arrayWordToFind = wordToFind.split("")
 
   // afficher de la longueur
   document.getElementById("letters").innerHTML = arrayWordToFind.length;
@@ -68,11 +68,11 @@ function checkWin(word, wordToFind) {
 
 function checkWellPlaced(word, wordToFind) {
   wellPlaced = []; // Réinitialisation
-  const baseArray = wordToFind.split('');
+
   const wordArray = word.split('');
 
   for (let i = 0; i < wordArray.length; i++) {
-    if (wordArray[i] === baseArray[i]) {
+    if (wordArray[i] === arrayWordToFind[i]) {
       wellPlaced.push(wordArray[i]);
     }
   }
@@ -82,15 +82,15 @@ function checkWellPlaced(word, wordToFind) {
 
 function checkMissPlaced(word, wordToFind) {
   missplaced = []; // Réinitialisation
-  const baseArray = wordToFind.split('');
+  const arrayWordToFind = wordToFind.split('');
   const wordArray = word.split('');
   
   // Créer une copie modifiable de baseArray
-  let remainingBase = [...baseArray];
+  let remainingBase = [...arrayWordToFind];
 
   for (let i = 0; i < wordArray.length; i++) {
     // Si la lettre n'est pas bien placée
-    if (wordArray[i] !== baseArray[i]) {
+    if (wordArray[i] !== arrayWordToFind[i]) {
       // Chercher si la lettre existe ailleurs
       const index = remainingBase.indexOf(wordArray[i]);
       if (index !== -1) {
@@ -106,11 +106,9 @@ function checkMissPlaced(word, wordToFind) {
 
 function checkNotInWord(word, wordToFind) {
   notInWord = []; // Réinitialisation
-  const baseArray = wordToFind.split('');
-  const wordArray = word.split('');
 
-  for (const char of wordArray) {
-    if (!baseArray.includes(char)) {
+  for (const char of arrayWord) {
+    if (!arrayWordToFind.includes(char)) {
       notInWord.push(char);
     }
   }
